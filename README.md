@@ -81,3 +81,78 @@ backend/
 ├─ Dockerfile
 ├─ package.json
 └─ server.js
+```
+
+## 🗄️ ER Diagram
+
+```mermaid
+erDiagram
+
+    USER {
+        int user_id PK
+        string name
+        string email
+        string password_hash
+        datetime created_at
+    }
+
+    PROJECT {
+        int project_id PK
+        int owner_id FK
+        string title
+        datetime created_at
+    }
+
+    FILE {
+        int file_id PK
+        int project_id FK
+        string filename
+        string content
+        datetime updated_at
+    }
+
+    ROOM {
+        int room_id PK
+        int created_by FK
+        string name
+        string share_link
+        datetime created_at
+    }
+
+    ROOM_MEMBER {
+        int room_member_id PK
+        int room_id FK
+        int user_id FK
+        datetime joined_at
+        datetime last_seen
+    }
+
+    MESSAGE {
+        int message_id PK
+        int room_id FK
+        int user_id FK
+        string content
+        datetime timestamp
+    }
+
+    EXECUTION_LOG {
+        int log_id PK
+        int user_id FK
+        int project_id FK
+        int file_id FK
+        string output
+        datetime run_timestamp
+    }
+
+    %% Relationships
+    USER ||--o{ PROJECT : owns
+    PROJECT ||--o{ FILE : contains
+    USER ||--o{ ROOM : creates
+    ROOM }o--o{ USER : members
+    ROOM ||--o{ MESSAGE : has
+    USER ||--o{ MESSAGE : writes
+    USER ||--o{ EXECUTION_LOG : runs
+    PROJECT ||--o{ EXECUTION_LOG : related_to
+    FILE ||--o{ EXECUTION_LOG : run_on
+```
+
