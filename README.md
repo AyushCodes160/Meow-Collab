@@ -59,21 +59,91 @@ It combines a powerful live code editor, secure backend execution, and instant s
 ## 🧩 Project Architecture
 frontend/
 ├─ src/
-│ ├─ components/
-│ ├─ pages/
-│ ├─ context/
-│ └─ utils/
+│  ├─ components/
+│  ├─ pages/
+│  ├─ context/
+│  └─ utils/
 ├─ package.json
 └─ vite.config.js
 
 backend/
 ├─ src/
-│ ├─ routes/
-│ ├─ controllers/
-│ ├─ services/
-│ ├─ prisma/
-│ └─ utils/
+│  ├─ routes/
+│  ├─ controllers/
+│  ├─ services/
+│  ├─ prisma/
+│  └─ utils/
 ├─ Dockerfile
 ├─ package.json
 └─ server.js
+
+
+## 🧩 ER Diagram
+
+
+    User {
+        int user_id PK
+        string name
+        string email
+        string password_hash
+        datetime created_at
+    }
+
+    Project {
+        int project_id PK
+        int owner_id FK
+        string title
+        datetime created_at
+    }
+
+    File {
+        int file_id PK
+        int project_id FK
+        string filename
+        string content
+        datetime updated_at
+    }
+
+    Room {
+        int room_id PK
+        int created_by FK
+        string name
+        string share_link
+        datetime created_at
+    }
+
+    RoomMember {
+        int id PK
+        int room_id FK
+        int user_id FK
+        datetime joined_at
+        datetime last_seen
+    }
+
+    Message {
+        int message_id PK
+        int room_id FK
+        int user_id FK
+        string content
+        datetime timestamp
+    }
+
+    ExecutionLog {
+        int log_id PK
+        int user_id FK
+        int project_id FK
+        int file_id FK
+        string output
+        datetime run_timestamp
+    }
+
+    User ||--o{ Project : "owns"
+    Project ||--o{ File : "contains"
+    User ||--o{ Room : "creates"
+    Room }o--o{ User : "memberships" 
+    Room ||--o{ Message : "has"
+    User ||--o{ Message : "writes"
+    User ||--o{ ExecutionLog : "executes"
+    Project ||--o{ ExecutionLog : "related to"
+    File ||--o{ ExecutionLog : "ran from"
 
