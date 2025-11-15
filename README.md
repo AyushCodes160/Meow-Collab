@@ -153,6 +153,6 @@ erDiagram
     USER ||--o{ MESSAGE : writes
     USER ||--o{ EXECUTION_LOG : runs
     PROJECT ||--o{ EXECUTION_LOG : related_to
-    FILE ||--o{ EXECUTION_LOG : run_on
+    FILE ||--o{ EXECUTION_LOG : run_on .......
 ```
 
