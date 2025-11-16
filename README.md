@@ -1,70 +1,166 @@
-#Meow Collab
+# 🧩 MeowCollab – Real-Time Collaborative Code Editor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🚀 Overview
 
-## Available Scripts
+MeowCollab is a full-stack web platform that enables developers, students, and teams to write, run, and collaborate on code in real time — directly from their browsers.
 
-In the project directory, you can run:
+It combines a powerful live code editor, secure backend execution, and real-time collaboration, making it perfect for coding sessions, interviews, and learning environments.
 
-### `npm start`
+## ⚙️ Core Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🧠 1. Real-Time Collaborative Editor
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Multiple users can edit the same file simultaneously
+- Live syntax highlighting with CodeMirror editor
+- Powered by Socket.IO for smooth, low-latency updates
+- Each user's changes are instantly visible to others
+- See who's currently online in the room
 
-### `npm test`
+### 💻 2. Code Execution (Multi-Language Support)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Supports **16 programming languages**: Python3, Java, C++, C, Node.js, Ruby, Go, Scala, Bash, SQL, Pascal, C#, PHP, Swift, Rust, and R
+- Code is executed securely on the backend using JDoodle API
+- Displays real-time output and error logs
+- Built-in compiler panel for testing code
 
-### `npm run build`
+### 👥 3. Room-Based Collaboration
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Create or join collaborative rooms using unique shareable room IDs
+- No authentication required - quick and easy collaboration
+- Share room IDs with team members to start coding together instantly
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 🎨 4. Modern Developer Interface
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Clean, responsive UI with a dark theme
+- Built using React with Bootstrap for styling
+- CodeMirror editor with Dracula theme for syntax highlighting
+- Real-time member list showing active collaborators
+- Easy room ID copying and sharing
 
-### `npm run eject`
+## 🧱 Tech Stack
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+| Layer | Technology |
+|-------|-----------|
+| Frontend | React, Bootstrap CSS, CodeMirror Editor |
+| Backend | Node.js (Express) |
+| Realtime Collaboration | Socket.IO |
+| Code Execution | JDoodle API |
+| Build Tool | React Scripts (Create React App) |
+| Routing | React Router DOM |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📋 Prerequisites
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Node.js (v14 or higher)
+- npm or yarn
+- JDoodle API credentials (for code execution)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🚀 Getting Started
 
-## Learn More
+### Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd meowcollab
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Install dependencies for both client and server:
+   ```bash
+   # Install server dependencies
+   cd server
+   npm install
 
-### Code Splitting
+   # Install client dependencies
+   cd ../client
+   npm install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. Set up environment variables:
 
-### Analyzing the Bundle Size
+   **Server** (`server/.env`):
+   ```env
+   PORT=5001
+   jDoodle_clientId=your_jdoodle_client_id
+   kDoodle_clientSecret=your_jdoodle_client_secret
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   **Client** (`client/.env`):
+   ```env
+   REACT_APP_BACKEND_URL=http://localhost:5001
+   ```
 
-### Making a Progressive Web App
+4. Start the development servers:
+   ```bash
+   # Start the backend server (from server directory)
+   npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   # Start the frontend (from client directory, in a new terminal)
+   npm start
+   ```
 
-### Advanced Configuration
+5. Open your browser and navigate to `http://localhost:3000`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🎯 Usage
 
-### Deployment
+1. **Create a Room**: Click "New Room" to generate a unique room ID
+2. **Join a Room**: Enter a room ID and your username, then click "JOIN"
+3. **Start Coding**: Write code in the collaborative editor
+4. **Select Language**: Choose from 16 supported programming languages
+5. **Run Code**: Click "Open Compiler" to test and execute your code
+6. **Share**: Copy the room ID and share it with collaborators
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 📝 Supported Languages
 
-### `npm run build` fails to minify
+- Python3
+- Java
+- C++
+- C
+- Node.js (JavaScript)
+- Ruby
+- Go
+- Scala
+- Bash
+- SQL
+- Pascal
+- C#
+- PHP
+- Swift
+- Rust
+- R
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🔧 Configuration
+
+### JDoodle API Setup
+
+To enable code execution, you need to set up JDoodle API credentials:
+
+1. **Sign up for JDoodle**:
+   - Go to https://www.jdoodle.com/
+   - Click "Sign Up" or "Login" if you already have an account
+   - JDoodle offers a free tier with limited requests
+
+2. **Get API Credentials**:
+   - After logging in, go to your account dashboard
+   - Navigate to "API" or "Credentials" section
+   - Copy your **Client ID** and **Client Secret**
+
+3. **Add to Environment File**:
+   - Open `server/.env` file
+   - Add the following lines:
+     ```
+     PORT=5001
+     jDoodle_clientId=your_client_id_here
+     kDoodle_clientSecret=your_client_secret_here
+     ```
+   - Replace `your_client_id_here` and `your_client_secret_here` with your actual credentials
+
+4. **Restart the Server**:
+   - Stop the server (Ctrl+C)
+   - Start it again with `npm start`
+   - The code execution should now work!
+
+**Note**: The free tier of JDoodle has usage limits. For production use, consider upgrading to a paid plan.
+
+## 📝 License
+
+ISC
