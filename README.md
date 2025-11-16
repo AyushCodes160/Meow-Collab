@@ -1,158 +1,70 @@
-# 🧩 MeowCollab – Real-Time Collaborative Code Editor
+#Meow Collab
 
-## 🚀 Overview
-MeowCollab is a full-stack web platform that enables developers, students, and teams to write, run, and collaborate on code in real time — directly from their browsers.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-It combines a powerful live code editor, secure backend execution, and instant synchronization, making it perfect for:
-- Pair programming
-- Coding interviews
-- Hackathons
-- Online classrooms
+## Available Scripts
 
----
+In the project directory, you can run:
 
-## ⚙️ Core Features
+### `npm start`
 
-### 🧠 1. Real-Time Collaborative Editor
-- Multiple users can edit the same file simultaneously  
-- Live cursor tracking and syntax highlighting  
-- Built using **Socket.IO** for low-latency updates  
-- Instant synchronization across all connected users  
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### 💻 2. Code Execution (Multi-Language Support)
-- Supports **JavaScript, Python, C, C++, and Java**
-- Executes code securely in **Docker containers**
-- Real-time output and error logs in an integrated console
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-### 👥 3. User Authentication & Rooms
-- Secure login / sign-up using email & password
-- Create or join collaborative rooms via shareable links
-- Session management via **JWT (JSON Web Token)**
+### `npm test`
 
-### 💾 4. Project & File Management
-- Create and organize files/folders inside projects
-- Autosave progress using **Prisma ORM**
-- Share project URLs with collaborators
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### 💬 5. Built-in Chat & Presence
-- Real-time chat inside each workspace
-- See which users are currently online and editing
+### `npm run build`
 
-### 🎨 6. Modern Developer Interface
-- Clean, responsive UI with dark theme
-- Built with **React + Vite + Tailwind CSS**
-- Editor powered by **Monaco Editor (VS Code)**
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
----
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-## 🧱 Tech Stack
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-| Layer | Technology |
-|------|------------|
-| **Frontend** | React (Vite), Tailwind CSS, Monaco Editor |
-| **Backend** | Node.js (Express), Prisma ORM |
-| **Database** | MySQL / PostgreSQL |
-| **Real-time Communication** | Socket.IO |
-| **Code Execution** | Docker Sandbox |
-| **Authentication** | JWT (JSON Web Token) |
-| **Deployment** | Vercel (Frontend) + Railway / Render (Backend) |
+### `npm run eject`
 
----
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-## 🧩 Project Architecture
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-```text
-frontend/
-├─ src/
-│  ├─ components/
-│  ├─ pages/
-│  ├─ context/
-│  └─ utils/
-├─ package.json
-└─ vite.config.js
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-backend/
-├─ src/
-│  ├─ routes/
-│  ├─ controllers/
-│  ├─ services/
-│  ├─ prisma/
-│  └─ utils/
-├─ Dockerfile
-├─ package.json
-└─ server.js
-```
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## 🗄️ ER Diagram
+## Learn More
 
-```mermaid
-erDiagram
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-    USER {
-        int user_id PK
-        string name
-        string email
-        string password_hash
-        datetime created_at
-    }
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-    PROJECT {
-        int project_id PK
-        int owner_id FK
-        string title
-        datetime created_at
-    }
+### Code Splitting
 
-    FILE {
-        int file_id PK
-        int project_id FK
-        string filename
-        string content
-        datetime updated_at
-    }
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-    ROOM {
-        int room_id PK
-        int created_by FK
-        string name
-        string share_link
-        datetime created_at
-    }
+### Analyzing the Bundle Size
 
-    ROOM_MEMBER {
-        int room_member_id PK
-        int room_id FK
-        int user_id FK
-        datetime joined_at
-        datetime last_seen
-    }
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-    MESSAGE {
-        int message_id PK
-        int room_id FK
-        int user_id FK
-        string content
-        datetime timestamp
-    }
+### Making a Progressive Web App
 
-    EXECUTION_LOG {
-        int log_id PK
-        int user_id FK
-        int project_id FK
-        int file_id FK
-        string output
-        datetime run_timestamp
-    }
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-    %% Relationships
-    USER ||--o{ PROJECT : owns
-    PROJECT ||--o{ FILE : contains
-    USER ||--o{ ROOM : creates
-    ROOM }o--o{ USER : members
-    ROOM ||--o{ MESSAGE : has
-    USER ||--o{ MESSAGE : writes
-    USER ||--o{ EXECUTION_LOG : runs
-    PROJECT ||--o{ EXECUTION_LOG : related_to
-    FILE ||--o{ EXECUTION_LOG : run_on .......
-```
+### Advanced Configuration
 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
